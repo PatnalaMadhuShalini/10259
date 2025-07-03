@@ -37,3 +37,71 @@ public class Solution {
         bufferedWriter.close();
     }
 }
+
+
+
+
+ /*find out the number where the sum of the numers = given number like we are finding 6 in the arr in pairs */
+   
+package project10259;
+
+public class arrays {
+     // Static array and target sum
+    static int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    static int sum = 9;
+
+    public static void main(String[] args) {
+        boolean found = false;
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {  // Avoid duplicate and self-pairs
+                if (arr[i] + arr[j] == sum) {
+                    System.out.println(arr[i] + " + " + arr[j] + " = " + sum);
+                    found = true;
+                }
+            }
+        }
+
+        if (!found) {
+            System.out.println("No pairs found with the sum " + sum);
+        }
+    }
+
+# using scanner 
+     import java.util.Scanner;                                                                                                                     
+     Scanner scanner = new Scanner(System.in);
+
+    // Input array size
+    System.out.print("Enter the number of elements in the array: ");
+    int n = scanner.nextInt();
+
+    // Declare and initialize the array
+    int[] arr = new int[n];
+    System.out.println("Enter " + n + " elements:");
+    for (int i = 0; i < n; i++) {
+        arr[i] = scanner.nextInt();
+    }
+
+    // Input target sum
+    System.out.print("Enter the target sum: ");
+    int sum = scanner.nextInt();
+
+    boolean found = false;
+
+    // Find and print pairs
+    System.out.println("Pairs with sum " + sum + ":");
+    for (int i = 0; i < arr.length; i++) {
+        for (int j = i + 1; j < arr.length; j++) {
+            if (arr[i] + arr[j] == sum) {
+                System.out.println(arr[i] + " + " + arr[j] + " = " + sum);
+                found = true;
+            }
+        }
+    }
+
+    if (!found) {
+        System.out.println("No pairs found with the sum " + sum);
+    }
+
+    scanner.close();  
+}
