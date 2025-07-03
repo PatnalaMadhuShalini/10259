@@ -1,0 +1,80 @@
+package project10259;
+
+public class patterns {
+public static void main(String[]args) {
+	int i,j;
+	/*right star traingle*/
+	for(i=1;i<=5;i++) {
+		for(j=1;j<=i;j++) {
+			System.out.print("*");
+		}
+		System.out.println();
+	}
+	
+	System.out.println("\n");
+	/*inverted right star traingle*/
+	for(i=5;i>=1;i--) {
+		for(j=1;j<=i;j++) {
+			System.out.print("*");
+		}
+		System.out.println();
+	}
+	
+	System.out.println("\n");
+	/*pyramid star traingle*/
+	for(i=1;i<=5;i++) {
+		for(j=1;j<=5-i;j++) {
+			System.out.print(" ");
+		}
+		for(j=1;j<=2*i-1;j++) {
+			System.out.print("*");
+		}
+		System.out.println();
+	}
+	  
+	System.out.println("\n");
+	/*inverted pyramid star traingle*/
+	for(i=5;i>=1;i--) {
+		for(j=1;j<=5-i;j++) {
+			System.out.print(" ");
+		}
+		for(j=1;j<=2*i-1;j++) {
+			System.out.print("*");
+		}
+		System.out.println();
+	}
+	  
+	System.out.println("\n");
+	/*hollow pyramid star traingle*/
+	for(i=1;i<=5;i++) {
+		for(j=1;j<=5-i;j++) {
+			System.out.print(" ");
+		}
+		for(j=1;j<=2*i-1;j++) {
+			if(j == 1||j==2*i-1||i==5) {
+				System.out.print("*");
+			}else {
+				System.out.print(" ");
+			}
+		}
+		System.out.println();
+	}
+	  
+	System.out.println("\n");
+	/*inverted hollow pyramid star traingle*/
+	for(i=5;i>=1;i--) {
+		for(j=1;j<=5-i;j++) {
+			System.out.print(" ");
+		}
+		for(j=1;j<=2*i-1;j++) {
+			if(j == 1||j==2*i-1||i==5) {
+				System.out.print("*");
+			}else {
+				System.out.print(" ");
+			}
+		}
+		System.out.println();
+	}
+	
+}
+}
