@@ -1,0 +1,105 @@
+/* You are given a pile of socks, each identified by a color code represented as an integer. Your task is to determine how many pairs of socks with matching colors can be formed from the pile.
+
+📘 Example
+Input:
+
+n = 7  
+ar = [1, 2, 1, 2, 1, 3, 2]
+Explanation:
+
+Color 1 appears 3 times → 1 pair
+
+Color 2 appears 3 times → 1 pair
+
+Color 3 appears once → 0 pairs
+
+Output:
+
+2
+🧩 Function Description
+Complete the sockMerchant function:
+
+java
+int sockMerchant(int n, int[] ar)
+Parameters:
+int n: the total number of socks
+
+int[] ar: an array of integers representing the color of each sock
+
+Returns:
+int: the total number of matching pairs
+
+ Input Format
+The first line contains an integer n, the number of socks.
+
+The second line contains n space-separated integers, each representing a sock color.
+
+ Constraints
+1
+≤
+𝑛
+≤
+100
+
+1
+≤
+𝑎
+𝑟
+[
+𝑖
+]
+≤
+100
+, where 
+0
+≤
+𝑖
+<
+𝑛
+
+ Sample Input
+9
+10 20 20 10 10 30 50 10 20
+Sample Output
+3*/
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    // Complete the sockMerchant function below.
+    static int sockMerchant(int n, int[] ar) {
+        Map<Integer, Integer> sockCount = new HashMap<>();
+        int pairs = 0;
+
+        for (int sock : ar) {
+            sockCount.put(sock, sockCount.getOrDefault(sock, 0) + 1);
+        }
+
+        for (int count : sockCount.values()) {
+            pairs += count / 2;
+        }
+
+        return pairs;
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int n = Integer.parseInt(bufferedReader.readLine().trim());
+
+        int[] ar = Arrays.stream(bufferedReader.readLine().trim().split(" "))
+                         .mapToInt(Integer::parseInt)
+                         .toArray();
+
+        int result = sockMerchant(n, ar);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
