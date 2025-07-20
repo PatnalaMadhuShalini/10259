@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Simple Todo List</title>
+    <link rel="stylesheet" href="todo.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Creative Header -->
+        <div class="header">
+            <h1> Todo Task Manager</h1>
+            <p>Stay organized and get things done, one task at a time!</p>
+        </div>
+
+        <!-- Add Todo Form -->
+        <div class="form-section">
+            <h2 class="form-title"> Add New Todo</h2>
+            <form id="todoForm">
+                <div class="form-group">
+                    <label for="todoTitle">Todo Title:</label>
+                    <input type="text" id="todoTitle" placeholder="Give your task a title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="todoDesc">Todo Description:</label>
+                    <input type="text" id="todoDesc" placeholder="Add more details about your task" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="targetDate">Target Date:</label>
+                    <input type="date" id="targetDate" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="status">Status:</label>
+                    <select id="status" required>
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn">Add Todo</button>
+            </form>
+        </div>
+
+        <!-- Todo Table -->
+        <div class="table-section">
+            <h2 class="table-title"> My Todo List</h2>
+            <div id="tableContainer">
+                <table id="todoTable">
+                    <thead>
+                        <tr>
+                            <th>Todo ID</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Target Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                     <tbody id="todoTableBody">
+                        <!-- Todo rows will be added  by Js -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+  </body>
+  <script src="todo.js"></script>
+</html>
