@@ -1,6 +1,37 @@
-
 var todoNumber = 1;
 var allTodos = [];
+
+//  initial todos
+allTodos = [
+    {
+        id: todoNumber++,
+        title: "Vocal Warm-Up Exercises",
+        description: "Practice Sarali Varisai (ascending & descending) in 3 speeds for voice control.",
+        targetDate: "20-07-2025 07:15",
+        status: "Pending"
+    },
+    {
+        id: todoNumber++,
+        title: "Learn New Geetham – \"Lambodara\"",
+        description: "Start learning Geetham in Raga Malahari with proper swara alignment.",
+        targetDate: "20-08-2025 07:45",
+        status: "Pending"
+    },
+    {
+        id: todoNumber++,
+        title: "Practice Alankaras",
+        description: "Practice 4 Alankaras in Adi Talam using multiple ragas (Mayamalavagowla, Shankarabharanam).",
+        targetDate: "20-08-2025 16:00",
+        status: "Pending"
+    },
+    {
+        id: todoNumber++,
+        title: "Record and Review Practice",
+        description: "Record today's music practice and review it to correct sruthi and tala alignment.",
+        targetDate: "21-08-2025 18:00",
+        status: "Pending"
+    }
+];
 
 //1.function to make new id numbers 
 function generateId() {
@@ -22,6 +53,7 @@ function addTodo(title, description, targetDate, status) {
     };
 
     allTodos.push(newTodo);
+     
     showAllTodos();
     clearForm();
 }
@@ -97,6 +129,7 @@ document.getElementById('todoForm').onsubmit = function(e) {
 
     addTodo(title, description, targetDate, status);
 };
+
 
 
 
