@@ -1,15 +1,15 @@
-// Simple variables for beginners
+
 var todoNumber = 1;
 var allTodos = [];
 
-// 1. Function to make new ID numbers
+//1.function to make new id numbers 
 function generateId() {
     var newId = todoNumber;
     todoNumber = todoNumber + 1;
     return newId;
 }
 
-// 2. Function to add new todo
+//2.function to add new todo
 function addTodo(title, description, targetDate, status) {
     var newId = generateId();
 
@@ -26,13 +26,13 @@ function addTodo(title, description, targetDate, status) {
     clearForm();
 }
 
-// Function to show todos in table
+// 3.Function to show todos in table
 function showAllTodos() {
     var tableBody = document.getElementById('todoTableBody');
     tableBody.innerHTML = '';
 
     if (allTodos.length === 0) {
-        tableBody.innerHTML = '<tr><td colspan="5" class="empty-state">No todos yet! Add your first task above. </td></tr>';
+        tableBody.innerHTML = '<tr><td colspan="6" class="empty-state">No todos yet! Add your first task above. </td></tr>';
         return;
     }
 
@@ -54,13 +54,30 @@ function showAllTodos() {
         newRow += '<td>' + todo.description + '</td>';
         newRow += '<td>' + todo.targetDate + '</td>';
         newRow += '<td><span class="' + statusColor + '">' + todo.status + '</span></td>';
+        newRow += '<td>';
+        if (todo.status !== 'Completed') {
+            newRow += '<button onclick="changeStatus(' + todo.id + ', \'In Progress\')">In Progress</button> ';
+            newRow += '<button onclick="changeStatus(' + todo.id + ', \'Completed\')">Complete</button>';
+        }
+        newRow += '</td>';
         newRow += '</tr>';
 
         tableBody.innerHTML += newRow;
     }
 }
 
-// Function to clear the form
+// function to handle the status change 
+function changeStatus(id, newStatus) {
+    for (var i = 0; i < allTodos.length; i++) {
+        if (allTodos[i].id === id) {
+            allTodos[i].status = newStatus;
+            break;
+        }
+    }
+    showAllTodos();
+}
+
+// Function to clear the form 
 function clearForm() {
     document.getElementById('todoTitle').value = '';
     document.getElementById('todoDesc').value = '';
@@ -68,7 +85,7 @@ function clearForm() {
     document.getElementById('status').value = 'Pending';
 }
 
-// When form is submitted
+// when form is submitted 
 document.getElementById('todoForm').onsubmit = function(e) {
     e.preventDefault();
 
@@ -77,6 +94,11 @@ document.getElementById('todoForm').onsubmit = function(e) {
     var targetDate = document.getElementById('targetDate').value;
     var status = document.getElementById('status').value;
 
+
     addTodo(title, description, targetDate, status);
 };
+
+
+
+
 
