@@ -8,10 +8,10 @@
 </head>
 <body>
     <div class="container">
-        <!-- Creative Header -->
+        <!-- Header -->
         <div class="header">
             <h1> Todo Task Manager</h1>
-            <p>Stay organized and get things done, one task at a time!</p>
+            
         </div>
 
         <!-- Add Todo Form -->
@@ -29,8 +29,8 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="targetDate">Target Date:</label>
-                    <input type="date" id="targetDate" required>
+                    <label for="targetDate">Target Date & Time:</label>
+                    <input type="datetime-local" id="targetDate" required>
                 </div>
                 
                 <div class="form-group">
@@ -58,10 +58,12 @@
                             <th>Description</th>
                             <th>Target Date</th>
                             <th>Status</th>
+                            
+                            
                         </tr>
                     </thead>
                      <tbody id="todoTableBody">
-                        <!-- Todo rows will be added  by Js -->
+                       
                     </tbody>
                 </table>
             </div>
