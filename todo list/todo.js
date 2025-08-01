@@ -8,28 +8,28 @@ allTodos = [
         title: "Vocal Warm-Up Exercises",
         description: "Practice Sarali Varisai (ascending & descending) in 3 speeds for voice control.",
         targetDate: "20-07-2025 07:15",
-        status: "Pending"
+        status: "Completed"
     },
     {
         id: todoNumber++,
         title: "Learn New Geetham – \"Lambodara\"",
         description: "Start learning Geetham in Raga Malahari with proper swara alignment.",
         targetDate: "20-08-2025 07:45",
-        status: "Pending"
+        status: "Completed"
     },
     {
         id: todoNumber++,
         title: "Practice Alankaras",
         description: "Practice 4 Alankaras in Adi Talam using multiple ragas (Mayamalavagowla, Shankarabharanam).",
         targetDate: "20-08-2025 16:00",
-        status: "Pending"
+        status: "Completed"
     },
     {
         id: todoNumber++,
         title: "Record and Review Practice",
         description: "Record today's music practice and review it to correct sruthi and tala alignment.",
         targetDate: "21-08-2025 18:00",
-        status: "Pending"
+        status: "Completed"
     }
 ];
 
@@ -49,7 +49,10 @@ function addTodo(title, description, targetDate, status) {
         title: title,
         description: description,
         targetDate: targetDate,
-        status: status
+        duedate: new Date(targetDate).toLocaleDateString(), // Format the date
+        priority: document.getElementById('priority').value, // Get the priority from the form
+        status: status,
+        
     };
 
     allTodos.push(newTodo);
@@ -129,6 +132,12 @@ document.getElementById('todoForm').onsubmit = function(e) {
 
     addTodo(title, description, targetDate, status);
 };
+
+// Show existing todos on page load
+showAllTodos();
+
+
+
 
 
 
