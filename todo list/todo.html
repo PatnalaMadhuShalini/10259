@@ -20,7 +20,7 @@
             <form id="todoForm">
                 <div class="form-group">
                     <label for="todoTitle">Todo Title:</label>
-                    <input type="text" id="todoTitle" placeholder="Give your task a title" required>
+                    <input type="text" id="todoTitle" placeholder="Enter your task title" required>
                 </div>
                 
                 <div class="form-group">
@@ -34,18 +34,19 @@
                 </div>
                 
                 <div class="form-group">
+                    <label for="dueDate">Due Date:</label>
+                    <input type="date" id="dueDate" required>
+                </div>
+                
+                <div class="form-group">
                     <label for="status">Status:</label>
                     <select id="status" required>
                         <option value="Pending">Pending</option>
-                        <option value="In Progress" disabled>In Progress</option>
-                        <option value="Completed"disabled >Completed</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
                     </select>
                 </div>
 
-                <div class="form-group">
-                    <label for ="Date">Due Date:</label>
-                    <input type="date" id="targetDate" required>
-                </div>
                 <div class="form-group">
                     <label for="priority">Priority:</label>
                     <select id="priority" required>
@@ -53,12 +54,53 @@
                         <option value="Medium">Medium</option>
                         <option value="Low">Low</option>
                     </select>
-
-                </div>    
-            
+                </div>
+                
+                <div class="form-group">
+                    <label for="tags">Tags:</label>
+                    <input type="text" id="tags" placeholder="Comma separated tags">
+                </div>
+                
+                <div class="form-group">
+                    <label for="recurring">Repeat:</label>
+                    <select id="recurring">
+                        <option value="">None</option>
+                        <option value="Daily">Daily</option>
+                        <option value="Weekly">Weekly</option>
+                    </select>
+                </div>
                 
                 <button type="submit" class="btn">Add Todo</button>
             </form>
+        </div>
+
+        <!-- Search, Filter, and Sort Controls -->
+        <div class="controls-section">
+            <input type="text" id="searchInput" placeholder="Search by title or description" oninput="filterTodos()">
+            <label for="filterStatus" class="visually-hidden">Filter by Status</label>
+            <select id="filterStatus" onchange="filterTodos()" title="Filter by Status">
+                <option value="">All Status</option>
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+            </select>
+            <select id="filterPriority" onchange="filterTodos()" title="Filter by Priority">
+                <option value="">All Priority</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+            <button onclick="sortTodos('duedate')">Sort by Due Date</button>
+            <button onclick="sortTodos('priority')">Sort by Priority</button>
+            <button onclick="sortTodos('status')">Sort by Status</button>
+            <button id="darkModeToggle" onclick="toggleDarkMode()">🌙</button>
+        </div>
+
+        <!-- Notification and Progress Bar -->
+        <div id="notification"></div>
+        <div id="progressContainer">
+            <div id="progressBar"></div>
+            <span id="progressText"></span>
         </div>
 
         <!-- Todo Table -->
@@ -75,7 +117,9 @@
                             <th>Due Date</th>
                             <th>Priority</th>
                             <th>Status</th>
-                            
+                            <th>Tags</th>
+                            <th>Repeat</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                      <tbody id="todoTableBody">
