@@ -1,0 +1,39 @@
+use test;
+
+create table todo_item(
+id int,
+todo_title varchar(50),
+todo_desc varchar(200),
+target_date date,
+todo_status varchar(10)
+);
+
+alter table todo_item  add due_date date;
+
+alter table todo_item add primary key(id);
+
+alter table todo_item modify id int  not null auto_increment ;
+
+# audit database 
+create table audit_log (
+    audit_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    table_name VARCHAR(100) NOT NULL,
+    record_id BIGINT NOT NULL,
+    action_type ENUM('INSERT', 'UPDATE', 'DELETE') NOT NULL,
+    changed_by VARCHAR(50) NOT NULL,
+    change_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    old_data JSON NULL,
+    new_data JSON NULL
+);
+
+
+create table  status_lookup (
+    status_id INT PRIMARY KEY AUTO_INCREMENT,
+    status_name VARCHAR(50) NOT NULL,       
+    status_type VARCHAR(50) NOT NULL,      
+    created_by VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    modified_by VARCHAR(50) DEFAULT NULL,
+    modified_at TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+);
+
