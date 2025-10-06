@@ -1,4 +1,4 @@
-# Button Functionalities Project
+# Button Functionalities 
 
 This project demonstrates various button functionalities implemented on a single-page website. The page includes multiple interactive buttons, each showcasing different JavaScript behaviors.
 
@@ -48,3 +48,4 @@ Open `todo.html` in a web browser to interact with the buttons and test the func
 - The layout is styled for a clean, professional look suitable for a single-page application.
 - All buttons have distinct IDs and event listeners for clear separation of functionality.
 - The project is designed for demonstration and learning purposes.
+
