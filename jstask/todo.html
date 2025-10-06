@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Button Functionalities</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        section {
+            margin-bottom: 30px;
+        }
+        h2 {
+            border-bottom: 2px solid #007BFF;
+            padding-bottom: 5px;
+            color: #007BFF;
+        }
+        button {
+            margin: 5px 10px 5px 0;
+            padding: 8px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            border: 1px solid #007BFF;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        input[type="text"], input[type="email"] {
+            padding: 8px;
+            font-size: 14px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+        }
+        #todoList {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        #fontText {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        img {
+            display: block;
+            margin-bottom: 10px;
+            max-width: 150px;
+            border-radius: 8px;
+        }
+    </style>
+
+    <div class="container">
+        <section>
+            <h2>Background Color Changer</h2>
+            <button id="colorButton">Change Background Color</button>
+        </section>
+
+        <section>
+            <h2>Counter</h2>
+            <button id="decrementBtn">Decrement</button>
+            <span id="counterValue">0</span>
+            <button id="incrementBtn">Increment</button>
+        </section>
+
+        <section>
+            <h2>Show/Hide Paragraph</h2>
+            <button id="toggleParagraphBtn">Show/Hide Paragraph</button>
+            <p id="toggleParagraph" style="display:none;">This paragraph can be shown or hidden.</p>
+        </section>
+
+        <section>
+            <h2>Alert Button</h2>
+            <button class="alertBtn">Click me for alert</button>
+        </section>
+
+        <section>
+            <h2>To-Do List</h2>
+            <input type="text" id="todoInput" placeholder="Enter new item" />
+            <button id="addTodoBtn">Add Item</button>
+            <ul id="todoList"></ul>
+        </section>
+
+        <section>
+            <h2>Image Source Changer</h2>
+            <img id="imageToChange" src="https://via.placeholder.com/150" alt="Placeholder Image" />
+            <button id="changeImageBtn">Change Image</button>
+        </section>
+
+        <section>
+            <h2>Like Button</h2>
+            <button id="likeBtn">Like</button>
+        </section>
+
+        <section>
+            <h2>Button Click Counter</h2>
+            <button id="clickCountBtn">Click me</button>
+            <p>Clicked <span id="clickCount">0</span> times</p>
+        </section>
+
+        <section>
+            <h2>Form Submit</h2>
+            <form id="sampleForm">
+                <input type="text" id="nameInput" placeholder="Enter your name" required />
+                <input type="email" id="emailInput" placeholder="Enter your email" required />
+                <button type="submit">Submit</button>
+            </form>
+            <p id="formOutput"></p>
+        </section>
+
+        <section>
+            <h2>Font Size Changer</h2>
+            <button id="increaseFontBtn">Increase Font Size</button>
+            <button id="decreaseFontBtn">Decrease Font Size</button>
+            <p id="fontText">This text will change size.</p>
+        </section>
+    </div>
+
+    <script src="jstask.js"></script>
+</body>
+</html>
