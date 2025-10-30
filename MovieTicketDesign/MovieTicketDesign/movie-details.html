@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineFlow - Movie Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <i class="fa-solid fa-film"></i> CineFlow
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html#nowShowing">Movies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#nowShowing">Theaters</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#footer">Contact</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="auth.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary" href="auth.html">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="row">
+            <!-- Movie Poster / Banner Section -->
+            <div class="col-md-4 mb-4">
+                <img src="https://via.placeholder.com/400x600/007bff/FFFFFF?text=Movie+Poster" class="img-fluid rounded shadow-lg" alt="The Last Voyage Poster">
+            </div>
+
+            <!-- Movie Details Section -->
+            <div class="col-md-8 mb-4">
+                <h1 class="display-4">The Last Voyage</h1>
+                <p class="lead text-muted">Action, Sci-Fi | PG-13 | 2h 15min</p>
+                <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-warning text-dark me-2"><i class="fas fa-star"></i> 8.5/10</span>
+                    <span class="text-muted">IMDb Rating</span>
+                </div>
+                <p>A thrilling journey to the edge of the galaxy to save humanity from an impending cosmic threat. Follow Captain Eva Rostova and her crew as they navigate uncharted territories, face alien civilizations, and uncover a conspiracy that could change the fate of the universe.</p>
+
+                <hr>
+
+                <p><strong>Director:</strong> Jane Doe</p>
+                <p><strong>Cast:</strong> John Smith, Emily White, David Green</p>
+                <p><strong>Release Date:</strong> October 26, 2023</p>
+                <p><strong>Language:</strong> English</p>
+
+                <div class="mt-4">
+                    <h5>Trailer</h5>
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <a href="#showtimes" class="btn btn-primary btn-lg mt-4">Book Tickets</a>
+            </div>
+        </div>
+
+        <!-- Showtimes Section -->
+        <section id="showtimes" class="my-5">
+            <h2 class="text-center mb-4">Showtimes</h2>
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="today-tab" data-bs-toggle="tab" data-bs-target="#today" type="button" role="tab" aria-controls="today" aria-selected="true">Today</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="tomorrow-tab" data-bs-toggle="tab" data-bs-target="#tomorrow" type="button" role="tab" aria-controls="tomorrow" aria-selected="false">Tomorrow</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="weekend-tab" data-bs-toggle="tab" data-bs-target="#weekend" type="button" role="tab" aria-controls="weekend" aria-selected="false">Weekend</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <div class="tab-content" id="myTabContent">
+                        <!-- Today's Showtimes -->
+                        <div class="tab-pane fade show active" id="today" role="tabpanel" aria-labelledby="today-tab">
+                            <h5 class="card-title">Grand Cinemas - Downtown</h5>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <a href="seat-selection.html" class="btn btn-outline-primary btn-sm">11:00 AM</a>
+                                <a href="seat-selection.html" class="btn btn-outline-primary btn-sm">2:30 PM</a>
+                                <a href="seat-selection.html" class="btn btn-outline-primary btn-sm">6:00 PM</a>
+                                <a href="seat-selection.html" class="btn btn-outline-primary btn-sm">9:45 PM</a>
+                            </div>
+
+                            <h5 class="card-title mt-4">Starplex - Uptown</h5>
+                            <div class="d-flex flex-wrap gap-2">
+                                <a href="seat-selection.html" class="btn btn-outline-primary btn-sm">1:00 PM</a>
+                                <a href="seat-selection.html" class="btn btn-outline-primary btn-sm">4:30 PM</a>
+                                <a href="seat-selection.html" class="btn btn-outline-primary btn-sm">8:15 PM</a>
+                            </div>
+                        </div>
+                        <!-- Tomorrow's Showtimes -->
+                        <div class="tab-pane fade" id="tomorrow" role="tabpanel" aria-labelledby="tomorrow-tab">
+                            <h5 class="card-title">Grand Cinemas - Downtown</h5>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <a href="seat-selection.html" class="btn btn-outline-primary btn-sm">10:30 AM</a>
+                                <a href="seat-selection.html" class="btn btn-outline-primary btn-sm">1:45 PM</a>
+                                <a href="seat-selection.html" class="btn btn-outline-primary btn-sm">5:15 PM</a>
+                                <a href="seat-selection.html" class="btn btn-outline-primary btn-sm">9:00 PM</a>
+                            </div>
+                        </div>
+                        <!-- Weekend Showtimes -->
+                        <div class="tab-pane fade" id="weekend" role="tabpanel" aria-labelledby="weekend-tab">
+                            <h5 class="card-title">Grand Cinemas - Downtown</h5>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <a href="seat-selection.html" class="btn btn-outline-primary btn-sm">12:00 PM</a>
+                                <a href="seat-selection.html" class="btn btn-outline-primary btn-sm">3:30 PM</a>
+                                <a href="seat-selection.html" class="btn btn-outline-primary btn-sm">7:00 PM</a>
+                                <a href="seat-selection.html" class="btn btn-outline-primary btn-sm">10:30 PM</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5><i class="fa-solid fa-film"></i> CineFlow</h5>
+                    <p>Your ultimate destination for movie tickets.</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="index.html#nowShowing" class="text-white text-decoration-none">Movies</a></li>
+                        <li><a href="index.html#nowShowing" class="text-white text-decoration-none">Theaters</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Follow Us</h5>
+                    <a href="#" class="text-white me-2" title="CineFlow on Facebook" aria-label="CineFlow on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i><span class="visually-hidden">Facebook</span></a>
+                    <a href="#" class="text-white me-2" title="CineFlow on Twitter" aria-label="CineFlow on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+                    <a href="#" class="text-white me-2" title="CineFlow on Instagram" aria-label="CineFlow on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i><span class="visually-hidden">Instagram</span></a>
+                    <p class="mt-3">&copy; 2025 CineFlow. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
