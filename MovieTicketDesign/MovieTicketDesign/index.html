@@ -95,50 +95,50 @@
         <section id="nowShowing" class="container my-5">
             <h2 class="text-center mb-4">Now Showing</h2>
 
-            <!-- Search and Filters -->
+            <!-- Search -->
             <div class="row mb-4">
-                <div class="col-md-3">
+                <div class="col-12">
                     <input type="text" id="movieSearch" class="form-control" placeholder="Search movies...">
                 </div>
-                <div class="col-md-3">
-                    <select id="genreFilter" class="form-select" aria-label="Filter by Genre">
-                        <option value="">All Genres</option>
-                        <option value="Action">Action</option>
-                        <option value="Sci-Fi">Sci-Fi</option>
-                        <option value="Horror">Horror</option>
-                        <option value="Comedy">Comedy</option>
-                        <option value="Fantasy">Fantasy</option>
-                        <option value="Thriller">Thriller</option>
-                        <option value="Adventure">Adventure</option>
-                        <option value="Supernatural">Supernatural</option>
-                        <option value="Cyberpunk">Cyberpunk</option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <select id="languageFilter" class="form-select" aria-label="Filter by Language">
-                        <option value="">All Languages</option>
-                        <option value="English">English</option>
-                        <option value="Hindi">Hindi</option>
-                        <option value="Tamil">Tamil</option>
-                        <option value="Telugu">Telugu</option>
-                        <option value="Kannada">Kannada</option>
-                        <option value="Malayalam">Malayalam</option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <select id="locationFilter" class="form-select" aria-label="Filter by Location">
-                        <option value="">All Locations</option>
-                        <option value="Mumbai">Mumbai</option>
-                        <option value="Delhi">Delhi</option>
-                        <option value="Chennai">Chennai</option>
-                        <option value="Bangalore">Bangalore</option>
-                        <option value="Hyderabad">Hyderabad</option>
-                        <option value="Kolkata">Kolkata</option>
-                        <option value="Pune">Pune</option>
-                        <option value="Ahmedabad">Ahmedabad</option>
-                        <option value="Jaipur">Jaipur</option>
-                        <option value="Surat">Surat</option>
-                    </select>
+            </div>
+
+            <!-- Filters -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse">
+                        Filter
+                    </button>
+                    <div class="collapse mt-3" id="filterCollapse">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="genreFilter" class="form-label">Genre</label>
+                                <select id="genreFilter" class="form-select" aria-label="Filter by Genre">
+                                    <option value="">All Genres</option>
+                                    <option value="Action">Action</option>
+                                    <option value="Sci-Fi">Sci-Fi</option>
+                                    <option value="Horror">Horror</option>
+                                    <option value="Comedy">Comedy</option>
+                                    <option value="Fantasy">Fantasy</option>
+                                    <option value="Thriller">Thriller</option>
+                                    <option value="Adventure">Adventure</option>
+                                    <option value="Supernatural">Supernatural</option>
+                                    <option value="Cyberpunk">Cyberpunk</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="languageFilter" class="form-label">Language</label>
+                                <select id="languageFilter" class="form-select" aria-label="Filter by Language">
+                                    <option value="">All Languages</option>
+                                    <option value="English">English</option>
+                                    <option value="Hindi">Hindi</option>
+                                    <option value="Tamil">Tamil</option>
+                                    <option value="Telugu">Telugu</option>
+                                    <option value="Kannada">Kannada</option>
+                                    <option value="Malayalam">Malayalam</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -194,42 +194,38 @@
             </div>
 
             <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    const searchInput = document.getElementById('movieSearch');
-                    const genreFilter = document.getElementById('genreFilter');
-                    const languageFilter = document.getElementById('languageFilter');
-                    const movieCards = document.querySelectorAll('.movie-card');
+                //document.addEventListener('DOMContentLoaded', function() {
+                    //const searchInput = document.getElementById('movieSearch');
+                    //const genreFilter = document.getElementById('genreFilter');
+                    //const languageFilter = document.getElementById('languageFilter');
+                   // const movieCards = document.querySelectorAll('.movie-card');
 
-                    function filterMovies() {
-                        const searchTerm = searchInput.value.toLowerCase();
-                        const selectedGenre = genreFilter.value;
-                        const selectedLanguage = languageFilter.value;
-                        const selectedLocation = locationFilter.value;
+                    //function filterMovies() {
+                       // const searchTerm = searchInput.value.toLowerCase();
+                       // const selectedGenre = genreFilter.value;
+                       // const selectedLanguage = languageFilter.value;
 
-                        movieCards.forEach(card => {
-                            const title = card.querySelector('.card-title').textContent.toLowerCase();
-                            const genres = card.dataset.genre.split(',');
-                            const language = card.dataset.language;
-                            const locations = card.dataset.location.split(',');
+                        //movieCards.forEach(card => {
+                        //    const title = card.querySelector('.card-title').textContent.toLowerCase();
+                           // const genres = card.dataset.genre.split(',');
+                           // const language = card.dataset.language;
 
-                            const matchesSearch = title.includes(searchTerm);
-                            const matchesGenre = !selectedGenre || genres.includes(selectedGenre);
-                            const matchesLanguage = !selectedLanguage || language === selectedLanguage;
-                            const matchesLocation = !selectedLocation || locations.includes(selectedLocation);
+                           // const matchesSearch = title.includes(searchTerm);
+                            //const matchesGenre = !selectedGenre || genres.includes(selectedGenre);
+                           // const matchesLanguage = !selectedLanguage || language === selectedLanguage;
 
-                            if (matchesSearch && matchesGenre && matchesLanguage && matchesLocation) {
-                                card.style.display = '';
-                            } else {
-                                card.style.display = 'none';
-                            }
-                        });
-                    }
+                      //      if (matchesSearch && matchesGenre && matchesLanguage) {
+                      //          card.style.display = '';
+                      //      } else {
+                      //          card.style.display = 'none';
+                  //          }
+                  //      });
+                 //   }
 
-                    searchInput.addEventListener('input', filterMovies);
-                    genreFilter.addEventListener('change', filterMovies);
-                    languageFilter.addEventListener('change', filterMovies);
-                    locationFilter.addEventListener('change', filterMovies);
-                });
+                  //  searchInput.addEventListener('input', filterMovies);
+                  //  genreFilter.addEventListener('change', filterMovies);
+                  //  languageFilter.addEventListener('change', filterMovies);
+             //   });
             </script>
         </section>
 
