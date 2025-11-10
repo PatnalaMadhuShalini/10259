@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineFlow - Payment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/design/css/style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/design/index.html">
+                <i class="fa-solid fa-film"></i> CineFlow
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/design/index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/design/index.html#nowShowing">Movies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/design/index.html#nowShowing">Theaters</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/design/index.html#footer">Contact</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/design/auth.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary" href="/design/auth.html">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <!-- Progress Indicator -->
+        <div class="d-flex justify-content-center mb-5 flex-wrap">
+            <div class="p-3 border rounded bg-light me-3 mb-2">
+                <i class="fa-solid fa-check-circle text-success me-2"></i> 1. Select Seats
+            </div>
+            <div class="p-3 border rounded bg-light me-3 mb-2">
+                <i class="fa-solid fa-check-circle text-success me-2"></i> 2. Food & Beverages
+            </div>
+            <div class="p-3 border rounded bg-primary text-white mb-2">
+                <i class="fa-solid fa-credit-card me-2"></i> 3. Payment
+            </div>
+        </div>
+
+        <h2 class="text-center mb-4">Complete Your Booking</h2>
+
+        <div class="row">
+            <!-- Order Summary -->
+            <div class="col-lg-5 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header h4 bg-light">Order Summary</div>
+                    <div class="card-body">
+                        <h5 class="mb-3">The Last Voyage</h5>
+                        <p class="text-muted mb-2">Grand Cinemas - Downtown</p>
+                        <p class="mb-4"><small class="text-muted">Today, 2:30 PM</small></p>
+
+                        <ul class="list-group list-group-flush mb-4" id="paymentOrderSummary">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>Movie Tickets</span>
+                                <span>₹<span id="paymentTicketsTotal">0.00</span></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-muted">
+                                <span><small>Seats: <span id="paymentSeatsDisplay">None</span></small></span>
+                                <span></span>
+                            </li>
+                            <li class="list-group-item list-group-item-secondary">Food & Beverages</li>
+                            <li class="list-group-item">
+                                <div id="paymentFnbList"></div>
+                            </li>
+                        </ul>
+
+                        <div class="d-flex justify-content-between h4 fw-bold mt-3 border-top pt-3">
+                            <span>Total Payable:</span>
+                            <span>₹<span id="paymentTotal">0.00</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Options -->
+            <div class="col-lg-7 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header h4 bg-light">Select Payment Method</div>
+                    <div class="card-body">
+                        <ul class="nav nav-pills flex-column flex-sm-row mb-4" id="paymentMethodsTab" role="tablist">
+                            <li class="nav-item mb-2 mb-sm-0 flex-fill" role="presentation">
+                                <button class="nav-link active w-100" id="creditCard-tab" data-bs-toggle="pill" data-bs-target="#creditCard" type="button" role="tab" aria-controls="creditCard" aria-selected="true">
+                                    <i class="fa-regular fa-credit-card me-2"></i> Credit/Debit Card
+                                </button>
+                            </li>
+                            <li class="nav-item mb-2 mb-sm-0 flex-fill" role="presentation">
+                                <button class="nav-link w-100" id="upi-tab" data-bs-toggle="pill" data-bs-target="#upi" type="button" role="tab" aria-controls="upi" aria-selected="false">
+                                    <i class="fa-solid fa-qrcode me-2"></i> UPI
+                                </button>
+                            </li>
+                            <li class="nav-item flex-fill" role="presentation">
+                                <button class="nav-link w-100" id="netBanking-tab" data-bs-toggle="pill" data-bs-target="#netBanking" type="button" role="tab" aria-controls="netBanking" aria-selected="false">
+                                    <i class="fa-solid fa-building-columns me-2"></i> Net Banking
+                                </button>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content" id="paymentMethodsTabContent">
+                            <!-- Credit/Debit Card Form -->
+                            <div class="tab-pane fade show active" id="creditCard" role="tabpanel" aria-labelledby="creditCard-tab">
+                                <form id="cardPaymentForm">
+                                    <div class="mb-3">
+                                        <label for="cardNumber" class="form-label">Card Number</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="cardNumber" placeholder="xxxx xxxx xxxx xxxx" required>
+                                            <span class="input-group-text"><i class="fa-brands fa-cc-visa"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="expiryDate" class="form-label">Expiry Date (MM/YY)</label>
+                                            <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="cvv" class="form-label">CVV</label>
+                                            <input type="text" class="form-control" id="cvv" placeholder="123" required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="cardHolderName" class="form-label">Card Holder Name</label>
+                                        <input type="text" class="form-control" id="cardHolderName" placeholder="Name on Card" required>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" value="" id="saveCard">
+                                        <label class="form-check-label" for="saveCard">
+                                            Save this card for future payments
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- UPI Form -->
+                            <div class="tab-pane fade" id="upi" role="tabpanel" aria-labelledby="upi-tab">
+                                <p>Enter your UPI ID or scan QR code:</p>
+                                <div class="mb-3">
+                                    <label for="upiId" class="form-label">UPI ID</label>
+                                    <input type="text" class="form-control" id="upiId" placeholder="yourname@bankupi">
+                                </div>
+                                <div class="text-center my-4">
+                                    <img src="https://via.placeholder.com/150/007bff/FFFFFF?text=UPI+QR+Code" alt="UPI QR Code" class="img-fluid border p-2 rounded">
+                                    <p class="mt-2 text-muted"><small>Scan this QR code with your UPI app</small></p>
+                                </div>
+                            </div>
+
+                            <!-- Net Banking Form -->
+                            <div class="tab-pane fade" id="netBanking" role="tabpanel" aria-labelledby="netBanking-tab">
+                                <p>Select your Bank for Net Banking:</p>
+                                <div class="mb-3">
+                                    <label for="bankSelect" class="form-label">Select Bank</label>
+                                    <select class="form-select" id="bankSelect">
+                                        <option selected disabled value="">Choose...</option>
+                                        <option>State Bank of India</option>
+                                        <option>HDFC Bank</option>
+                                        <option>ICICI Bank</option>
+                                        <option>Axis Bank</option>
+                                        <option>Other Bank</option>
+                                    </select>
+                                </div>
+                                <p class="text-muted"><small>You will be redirected to your bank's website to complete the payment.</small></p>
+                            </div>
+                        </div>
+
+                        <div class="form-check mb-4 mt-3">
+                            <input class="form-check-input" type="checkbox" value="" id="termsAndConditions">
+                            <label class="form-check-label" for="termsAndConditions">
+                                I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms & Conditions</a>
+                            </label>
+                        </div>
+
+                        <button type="button" class="btn btn-success btn-lg w-100" id="payNowBtn">Pay Now</button>
+                        <a href="/design/food-beverages.html" class="btn btn-link w-100 mt-2">Go Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Terms & Conditions Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="termsModalLabel">Terms & Conditions</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>1. Ticket Purchase</h6>
+                    <p>All ticket purchases are final. Refunds or exchanges are subject to the cinema's policy.</p>
+                    <h6>2. Seat Selection</h6>
+                    <p>Seats are reserved upon successful payment. Changing seats after booking may not be possible.</p>
+                    <h6>3. Food & Beverages</h6>
+                    <p>Prices and availability of F&B items are subject to change without prior notice.</p>
+                    <h6>4. Privacy Policy</h6>
+                    <p>Your personal data will be collected and used in accordance with our Privacy Policy.</p>
+                    <h6>5. General</h6>
+                    <p>Management reserves the right to refuse admission. Latecomers may be admitted at a suitable break.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5><i class="fa-solid fa-film"></i> CineFlow</h5>
+                    <p>Your ultimate destination for movie tickets.</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/design/index.html" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="/design/index.html#nowShowing" class="text-white text-decoration-none">Movies</a></li>
+                        <li><a href="/design/index.html#nowShowing" class="text-white text-decoration-none">Theaters</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Follow Us</h5>
+                    <a href="#" class="text-white me-2" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-2" title="Twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-2" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <p class="mt-3">&copy; 2025 CineFlow. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
