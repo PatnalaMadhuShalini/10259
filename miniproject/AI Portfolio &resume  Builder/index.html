@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Portfolio Builder</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-rocket"></i> AI Portfolio Builder</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <button class="btn btn-outline-light me-2" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <ul class="nav nav-tabs" id="portfolioTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="builder-tab" data-bs-toggle="tab" data-bs-target="#builder" type="button" role="tab">Builder</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="preview-tab" data-bs-toggle="tab" data-bs-target="#preview" type="button" role="tab">Preview</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="export-tab" data-bs-toggle="tab" data-bs-target="#export" type="button" role="tab">Export</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="portfolioTabsContent">
+            <div class="tab-pane fade show active" id="builder" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-8">
+                        <form id="portfolioForm">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5><i class="fas fa-user"></i> Personal Information</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="fullName" class="form-label">Full Name</label>
+                                            <input type="text" class="form-control" id="fullName" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="professionalTitle" class="form-label">Professional Title</label>
+                                            <input type="text" class="form-control" id="professionalTitle" required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="bio" class="form-label">Bio / About Me</label>
+                                        <textarea class="form-control" id="bio" rows="3"></textarea>
+                                        <button type="button" class="btn btn-sm btn-outline-primary mt-2" id="generateBio"><i class="fas fa-magic"></i> AI Generate Bio</button>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="email">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="phone" class="form-label">Phone</label>
+                                            <input type="tel" class="form-control" id="phone">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="website" class="form-label">Website URL</label>
+                                            <input type="url" class="form-control" id="website">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="github" class="form-label">GitHub URL</label>
+                                            <input type="url" class="form-control" id="github">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="linkedin" class="form-label">LinkedIn URL</label>
+                                            <input type="url" class="form-control" id="linkedin">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="twitter" class="form-label">Twitter URL</label>
+                                        <input type="url" class="form-control" id="twitter">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5><i class="fas fa-tools"></i> Skills</h5>
+                                </div>
+                                <div class="card-body">
+                                    <label for="skills" class="form-label">Enter skills separated by commas</label>
+                                    <input type="text" class="form-control" id="skills" placeholder="e.g., React, Node.js, Python">
+                                </div>
+                            </div>
+
+                            <div class="card mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5><i class="fas fa-project-diagram"></i> Projects</h5>
+                                    <button type="button" class="btn btn-primary btn-sm" id="addProject"><i class="fas fa-plus"></i> Add Project</button>
+                                </div>
+                                <div class="card-body" id="projectsContainer">
+                                    <!-- Projects will be added here dynamically -->
+                                </div>
+                            </div>
+
+                            <div class="card mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5><i class="fas fa-briefcase"></i> Experience</h5>
+                                    <button type="button" class="btn btn-primary btn-sm" id="addExperience"><i class="fas fa-plus"></i> Add Experience</button>
+                                </div>
+                                <div class="card-body" id="experienceContainer">
+                                    <!-- Experience will be added here dynamically -->
+                                </div>
+                            </div>
+
+                            <div class="card mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5><i class="fas fa-graduation-cap"></i> Education</h5>
+                                    <button type="button" class="btn btn-primary btn-sm" id="addEducation"><i class="fas fa-plus"></i> Add Education</button>
+                                </div>
+                                <div class="card-body" id="educationContainer">
+                                    <!-- Education will be added here dynamically -->
+                                </div>
+                            </div>
+
+                            <div class="card mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5><i class="fas fa-certificate"></i> Certifications</h5>
+                                    <button type="button" class="btn btn-primary btn-sm" id="addCertification"><i class="fas fa-plus"></i> Add Certification</button>
+                                </div>
+                                <div class="card-body" id="certificationsContainer">
+                                    <!-- Certifications will be added here dynamically -->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5><i class="fas fa-palette"></i> AI Templates</h5>
+                            </div>
+                            <div class="card-body">
+                                <button class="btn btn-outline-primary w-100 mb-3" id="aiSuggest"><i class="fas fa-robot"></i> AI Suggest Template</button>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-outline-secondary template-btn" data-template="minimalist">Minimalist</button>
+                                    <button class="btn btn-outline-secondary template-btn" data-template="modern">Modern</button>
+                                    <button class="btn btn-outline-secondary template-btn" data-template="creative">Creative</button>
+                                    <button class="btn btn-outline-secondary template-btn" data-template="corporate">Corporate</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="preview" role="tabpanel">
+                <div class="card">
+                    <div class="card-body">
+                        <iframe id="portfolioPreview" width="100%" height="600" frameborder="0"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="export" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Export Portfolio</h5>
+                            </div>
+                            <div class="card-body">
+                                <button class="btn btn-success w-100 mb-2" id="exportHTML"><i class="fas fa-download"></i> Download as HTML</button>
+                                <button class="btn btn-danger w-100" id="exportPDF"><i class="fas fa-file-pdf"></i> Download as PDF</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Export Resume</h5>
+                            </div>
+                            <div class="card-body">
+                                <button class="btn btn-success w-100 mb-2" id="exportResumeHTML"><i class="fas fa-download"></i> Download Resume as HTML</button>
+                                <button class="btn btn-danger w-100" id="exportResumePDF"><i class="fas fa-file-pdf"></i> Download Resume as PDF</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
